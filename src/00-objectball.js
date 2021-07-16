@@ -210,6 +210,33 @@ function winningTeam(){
   return awayTeamPoints > homeTeamPoints ? awayTeam().teamName : homeTeam().teamName;
 }
 //Which player has the longest name? Call the function playerWithLongestName.
-
+function playerWithLongestName(){
+  const playerObj = {name: '', nameLength: 0};
+  for (const player in players()){
+    if (player.length > playerObj.name.length){
+      playerObj.name = player;
+      playerObj.nameLength = player.length;
+    }
+  }
+  return playerObj;
+}
 
 //Write a function that returns true if the player with the longest name had the most steals. Call the function doesLongNameStealATon
+function doesLongNameStealATon(){
+  const playerLongName = playerWithLongestName().name
+
+  function mostSteals(){
+  const playerObj = {name:'', steals: 0};
+    for (const player in players()){
+      if (players()[player].steals > playerObj.steals){
+        playerObj.name = player;
+        playerObj.steals = players()[player].steals;
+      }
+    }
+  return playerObj;
+  }
+  return playerLongName === mostSteals().name;
+}
+
+
+
